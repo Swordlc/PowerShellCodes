@@ -1,9 +1,8 @@
-# PowerShellCodes
 # Shift+右键选择文件夹目录启动Windows PowerShell
 
 # 遍历文件创建文件夹
-# 遍历每个.mp4文件，创建相应名字的文件夹，将其移动到相应名字的文件夹中
-# 将filter删除即不限文件格式，或在filter中规定新的文件格式如.mp3 .json等
+遍历每个.mp4文件，创建相应名字的文件夹，将其移动到相应名字的文件夹中
+将filter删除即不限文件格式，或在filter中规定新的文件格式如.mp3 .json等
 
 Get-ChildItem -Filter *.mp4 | ForEach-Object {
     $name = $_.Name.Replace(".mp4","")  
@@ -12,7 +11,8 @@ Get-ChildItem -Filter *.mp4 | ForEach-Object {
 }
 
 # 遍历视频文件信息读取到文档
-# 遍历目录下包括每个子文件夹的.mp4文件，使用FFmpeg实现读取帧宽度、帧高度，并写入一个响应的新.yml键值对文件中
+遍历目录下包括每个子文件夹的.mp4文件，使用FFmpeg实现读取帧宽度、帧高度，并写入一个响应的新.yml键值对文件中
+
 Get-ChildItem -Recurse | ForEach-Object {
 if($_.PSIsContainer){ 
     cd $_.FullName
