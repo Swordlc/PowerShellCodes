@@ -1,0 +1,10 @@
+#Shift+右键选择文件夹目录启动Windows PowerShell
+
+#遍历每个.mp4文件，创建相应名字的文件夹，将其移动到相应名字的文件夹中
+#将filter删除即不限文件格式，或在filter中规定新的文件格式如.mp3 .json等
+
+Get-ChildItem -Filter *.mp4 | ForEach-Object {
+    $name = $_.Name.Replace(".mp4","")  
+    New-Item -ItemType Directory -Name $name
+    Move-Item -Path $_.FullName -Destination $name  
+}
